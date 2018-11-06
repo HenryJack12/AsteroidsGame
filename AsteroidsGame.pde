@@ -3,19 +3,23 @@ Star stars;
 boolean isAccelerating = false;
 boolean isTurningLeft = false;
 boolean isTurningRight = false;
+Asteroid[] AsteroidField = new Asteroid[10];
 public void setup() 
 {
 	size(800,800);
 	background(0);
 	stars = new Star(); 
 	stars.show();
+	for(int i = 0; i < AsteroidField.length; i++) {
+		AsteroidField[i] = new Asteroid();
+	}
 }
 public void draw() 
 {
 	background(0);
 	stars.show();
 	if(isAccelerating == true) {
-		Boat.accelerate(0.2);
+		Boat.accelerate(0.1);
 	}
 	if(isTurningRight == true) {
 		Boat.turn(5);
@@ -25,6 +29,10 @@ public void draw()
 	}
 	Boat.move();
 	Boat.show();
+	for(int i = 0; i < AsteroidField.length; i++) {
+		AsteroidField[i].move();
+		AsteroidField[i].show();
+	}
 }
 void keyPressed()
 {
