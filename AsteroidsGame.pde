@@ -6,7 +6,7 @@ boolean isTurningRight = false;
 ArrayList <Asteroid> AsteroidField;
 public void setup() 
 {
-	size(1200,900);
+	size(1000,800);
 	frameRate(90);
 	background(0);
 	stars = new Star(); 
