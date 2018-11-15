@@ -4,9 +4,9 @@ class Star
   int yPos[];
   Star()
   {
-    xPos = new int[200];
-    yPos = new int[200];
-    for (int i = 0; i< 200; i++)
+    xPos = new int[300];
+    yPos = new int[300];
+    for (int i = 0; i< 300; i++)
     {
       xPos[i] = (int)(Math.random() * width);
       yPos[i] = (int)(Math.random() * height);
@@ -14,7 +14,7 @@ class Star
   }
   void show()
   {
-    for (int i = 0; i < 200; i++)
+    for (int i = 0; i < 300; i++)
     {
       ellipse(xPos[i], yPos[i], 5, 5);
       stroke((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255));
