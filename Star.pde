@@ -16,8 +16,8 @@ class Star
   {
     for (int i = 0; i < 300; i++)
     {
+      stroke(240, 240, 160);
       ellipse(xPos[i], yPos[i], 5, 5);
-      stroke((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255));
       strokeWeight(4);
     }
   }
