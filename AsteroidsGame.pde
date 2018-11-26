@@ -11,7 +11,7 @@ public void setup()
 	background(0);
 	stars = new Star(); 
 	stars.show();
-	AsteroidField = new ArrayList <Asteroid>(10);
+	AsteroidField = new ArrayList <Asteroid>();
 	for(int i = 0; i < 10; i++) {
 		AsteroidField.add(new Asteroid());
 	}
