@@ -35,7 +35,9 @@ public void draw()
 		AsteroidField.get(i).move();
 		AsteroidField.get(i).show();
 		if(dist(Boat.getX(), Boat.getY(), AsteroidField.get(i).getX(), AsteroidField.get(i).getY()) < 30){
-			AsteroidField.remove(i);
+			AsteroidField.remove(i);		
+			AsteroidField.add(new Asteroid());
+
 		}
 	}
 }
