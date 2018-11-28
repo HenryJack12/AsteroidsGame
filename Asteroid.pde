@@ -19,7 +19,6 @@ class Asteroid extends Floater
 		yCorners[3] = 10;
 		yCorners[4] = 8;
 		yCorners[5] = 0;
-		myColor = 255;
 		myDirectionX = (Math.random() * 4) - 2;
 		myDirectionY = (Math.random() * 4) - 2;
 		myPointDirection = Math.random() * 360;

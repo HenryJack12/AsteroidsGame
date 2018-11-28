@@ -1,9 +1,11 @@
 Spaceship Boat = new Spaceship();
 Star stars;
+Bullet henry = new Bullet(Boat);
 boolean isAccelerating = false;
 boolean isTurningLeft = false;
 boolean isTurningRight = false;
 ArrayList <Asteroid> AsteroidField;
+ArrayList <Bullet> Ammo;
 public void setup() 
 {
 	size(1000,800);
@@ -12,6 +14,7 @@ public void setup()
 	stars = new Star(); 
 	stars.show();
 	AsteroidField = new ArrayList <Asteroid>();
+	Ammo = new ArrayList <Bullet>();
 	for(int i = 0; i < 10; i++) {
 		AsteroidField.add(new Asteroid());
 	}
@@ -21,7 +24,7 @@ public void draw()
 	background(0);
 	stars.show();
 	if(isAccelerating == true) {
-		Boat.accelerate(0.07);
+		Boat.accelerate(0.04);
 	}
 	if(isTurningRight == true) {
 		Boat.turn(5);
@@ -29,13 +32,33 @@ public void draw()
 	if(isTurningLeft == true) {
 		Boat.turn(-5);
 	}
+	fill(255);
 	Boat.move();
+	stroke(255);
 	Boat.show();
+	fill(255);
+	stroke(99, 105, 114); 
 	for(int i = 0; i < AsteroidField.size(); i++) {
 		AsteroidField.get(i).move();
+		fill(99, 105, 114);
 		AsteroidField.get(i).show();
 		if(dist(Boat.getX(), Boat.getY(), AsteroidField.get(i).getX(), AsteroidField.get(i).getY()) < 30){
 			AsteroidField.remove(i);
+			AsteroidField.add(new Asteroid());
+		}
+		for(int j = 0; j < Ammo.size(); j++) {
+			if(dist(Ammo.get(j).getX(), Ammo.get(j).getY(), AsteroidField.get(i).getX(), AsteroidField.get(i).getY())< 30){
+				Ammo.remove(j);
+				AsteroidField.remove(i);
+				AsteroidField.add(new Asteroid());
+			}
+		}
+	}
+	for(int i = 0; i < Ammo.size(); i++){
+		Ammo.get(i).move();
+		Ammo.get(i).show();
+		if(Ammo.get(i).getX() > 999 || Ammo.get(i).getX() < 1 || Ammo.get(i).getY() > 799 || Ammo.get(i).getY() < 1) {
+			Ammo.remove(i);
 		}
 	}
 }
@@ -56,6 +79,9 @@ void keyPressed()
 	Boat.setPointDirection((int) (Math.random() * 360));
 	Boat.setDirectionX(0);
 	Boat.setDirectionY(0);
+  }
+  if (key == ' '){
+  	Ammo.add(new Bullet(Boat));
   }
 }
 void keyReleased()
