@@ -6,6 +6,10 @@ boolean isTurningLeft = false;
 boolean isTurningRight = false;
 ArrayList <Asteroid> AsteroidField;
 ArrayList <Bullet> Ammo;
+int score = 0;
+int lives = 3;
+int highScore = 0;
+
 public void setup() 
 {
 	size(1000,800);
@@ -15,7 +19,7 @@ public void setup()
 	stars.show();
 	AsteroidField = new ArrayList <Asteroid>();
 	Ammo = new ArrayList <Bullet>();
-	for(int i = 0; i < 10; i++) {
+	for(int i = 0; i < 25; i++) {
 		AsteroidField.add(new Asteroid());
 	}
 }
@@ -44,12 +48,15 @@ public void draw()
 		AsteroidField.get(i).show();
 		if(dist(Boat.getX(), Boat.getY(), AsteroidField.get(i).getX(), AsteroidField.get(i).getY()) < 30){
 			AsteroidField.remove(i);
+			score-= 100;
+			lives--;
 			AsteroidField.add(new Asteroid());
 		}
 		for(int j = 0; j < Ammo.size(); j++) {
 			if(dist(Ammo.get(j).getX(), Ammo.get(j).getY(), AsteroidField.get(i).getX(), AsteroidField.get(i).getY())< 30){
 				Ammo.remove(j);
 				AsteroidField.remove(i);
+				score += 100;
 				AsteroidField.add(new Asteroid());
 			}
 		}
@@ -60,6 +67,17 @@ public void draw()
 		if(Ammo.get(i).getX() > 999 || Ammo.get(i).getX() < 1 || Ammo.get(i).getY() > 799 || Ammo.get(i).getY() < 1) {
 			Ammo.remove(i);
 		}
+	}
+	textSize(30);
+	text("Score: " + score, 10, 30);
+	text("Lives: " + lives, 10, 60);
+	text("High Score: " + highScore, 10, 90);
+	if(score > highScore) {
+		highScore = score;
+	}
+	if(lives < 1) {
+		score = 0;
+		lives = 3;
 	}
 }
 void keyPressed()
