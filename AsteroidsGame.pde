@@ -19,7 +19,7 @@ public void setup()
 	stars.show();
 	AsteroidField = new ArrayList <Asteroid>();
 	Ammo = new ArrayList <Bullet>();
-	for(int i = 0; i < 25; i++) {
+	for(int i = 0; i < 20; i++) {
 		AsteroidField.add(new Asteroid());
 	}
 }
