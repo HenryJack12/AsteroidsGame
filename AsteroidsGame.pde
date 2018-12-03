@@ -1,6 +1,5 @@
 Spaceship Boat = new Spaceship();
 Star stars;
-Bullet henry = new Bullet(Boat);
 boolean isAccelerating = false;
 boolean isTurningLeft = false;
 boolean isTurningRight = false;
@@ -36,19 +35,19 @@ public void draw()
 	if(isTurningLeft == true) {
 		Boat.turn(-5);
 	}
-	fill(255);
+	fill(0);
 	Boat.move();
-	stroke(255);
+	stroke(0, 255, 12);
 	Boat.show();
-	fill(255);
+	fill(0);
 	stroke(99, 105, 114); 
 	for(int i = 0; i < AsteroidField.size(); i++) {
 		AsteroidField.get(i).move();
-		fill(99, 105, 114);
+		stroke(0, 255, 12);
 		AsteroidField.get(i).show();
+		fill(0);
 		if(dist(Boat.getX(), Boat.getY(), AsteroidField.get(i).getX(), AsteroidField.get(i).getY()) < 30){
 			AsteroidField.remove(i);
-			score-= 100;
 			lives--;
 			AsteroidField.add(new Asteroid());
 		}
@@ -63,15 +62,18 @@ public void draw()
 	}
 	for(int i = 0; i < Ammo.size(); i++){
 		Ammo.get(i).move();
+		fill(0,255,12);
 		Ammo.get(i).show();
 		if(Ammo.get(i).getX() > 999 || Ammo.get(i).getX() < 1 || Ammo.get(i).getY() > 799 || Ammo.get(i).getY() < 1) {
 			Ammo.remove(i);
 		}
 	}
-	textSize(30);
-	text("Score: " + score, 10, 30);
-	text("Lives: " + lives, 10, 60);
-	text("High Score: " + highScore, 10, 90);
+	textSize(20);
+	stroke(0, 255, 12);
+	fill(0,255,12);
+	text("Score: " + score, 10, 20);
+	text("Lives: " + lives, 10, 40);
+	text("High Score: " + highScore, 10, 60);
 	if(score > highScore) {
 		highScore = score;
 	}
