@@ -11,8 +11,8 @@ int highScore = 0;
 
 public void setup() 
 {
-	size(1000,750);
-	frameRate(90);
+	size(1000,700);
+	frameRate(120);
 	background(0);
 	stars = new Star(); 
 	stars.show();
@@ -64,7 +64,7 @@ public void draw()
 		Ammo.get(i).move();
 		fill(0,255,12);
 		Ammo.get(i).show();
-		if(Ammo.get(i).getX() > 999 || Ammo.get(i).getX() < 1 || Ammo.get(i).getY() > 799 || Ammo.get(i).getY() < 1) {
+		if(Ammo.get(i).getX() > 999 || Ammo.get(i).getX() < 1 || Ammo.get(i).getY() > 699 || Ammo.get(i).getY() < 1) {
 			Ammo.remove(i);
 		}
 	}
