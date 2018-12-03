@@ -11,7 +11,7 @@ int highScore = 0;
 
 public void setup() 
 {
-	size(1000,800);
+	size(1000,750);
 	frameRate(90);
 	background(0);
 	stars = new Star(); 
