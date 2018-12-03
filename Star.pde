@@ -16,10 +16,11 @@ class Star
   {
     for (int i = 0; i < 300; i++)
     {
-      stroke(0,255,12);
-      ellipse(xPos[i], yPos[i], 5, 5);
-      fill(0);
       strokeWeight(.5);
+      stroke(0,255,12);
+      fill(0);
+      ellipse(xPos[i], yPos[i], 5, 5);
+      ellipse(xPos[i], yPos[i], 5, 5);
     }
   }
 }
